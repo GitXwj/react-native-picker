@@ -60,7 +60,7 @@ interface PickerOptions {
      * @type {string}
      * @memberof PickerOptions
      */
-    pickerCancelBtnText?: string
+    pickerCancelBtnText: string
 
     /**
      * The color of the text for the confirm button
@@ -235,7 +235,7 @@ export default class Picker {
      * @memberof Picker
      */
     static hide(): void
-
+    static setPickerTitleText(title: string): void
     /**
      * Toggles the visibility of the picker
      *
@@ -266,5 +266,5 @@ export default class Picker {
      *
      * @memberof Picker
      */
-    static isPickerShow(fn?: (err: any, message: any) => void): boolean
+    static isPickerShow(): boolean
 }

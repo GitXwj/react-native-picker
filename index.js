@@ -27,7 +27,7 @@ const options = {
     onPickerSelect(){},
     pickerToolBarFontSize: 16,
     pickerFontSize: 16,
-    pickerFontColor: [31, 31 ,31, 1]
+    pickerFontColor: [31, 31, 31, 1]
 };
 
 export default {
@@ -49,7 +49,9 @@ export default {
             fnConf[event['type']](event['selectedValue'], event['selectedIndex']);
         });
     },
-
+    setPickerTitleText(title){
+        Picker.setPickerTitleText(title);
+    },
     show(){
         Picker.show();
     },
@@ -59,10 +61,10 @@ export default {
     },
 
     select(arr, fn) {
-        if(ios){
+        if (ios) {
             Picker.select(arr);
         }
-        else if(android){
+        else if (android) {
             Picker.select(arr, err => {
                 typeof fn === 'function' && fn(err);
             });
@@ -71,10 +73,10 @@ export default {
 
     toggle(){
         this.isPickerShow(show => {
-            if(show){
+            if (show) {
                 this.hide();
             }
-            else{
+            else {
                 this.show();
             }
         });
@@ -85,13 +87,13 @@ export default {
         //ios return only one param: hide or not...
         Picker.isPickerShow((err, status) => {
             let returnValue = null;
-            if(android){
+            if (android) {
                 returnValue = err ? false : status;
             }
-            else if(ios){
+            else if (ios) {
                 returnValue = !err;
             }
-            fn && fn(returnValue);
+            fn(returnValue);
         });
     }
 };
